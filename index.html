@@ -7,327 +7,8 @@
   <!-- Font Poppins -->
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet" />
   <!-- FontAwesome Icons -->
-  <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
-  <style>
-    /* Reset & Base Styles */
-    * { margin: 0; padding: 0; box-sizing: border-box; }
-    body {
-      font-family: 'Poppins', sans-serif;
-      background-color: #fff8f0;
-      color: #333;
-      line-height: 1.6;
-      min-height: 100vh;
-      display: flex;
-      flex-direction: column;
-      transition: background-color 0.3s ease, color 0.3s ease;
-    }
-    body.dark {
-      background-color: #1a1a1a;
-      color: #e0e0e0;
-    }
-
-    /* Container */
-    .container { width: 90%; max-width: 1200px; margin: 0 auto; padding: 0 1rem; }
-
-    /* Navbar */
-    .navbar {
-      background-color: #ffd6e8;
-      padding: 1rem 0;
-      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-      position: sticky;
-      top: 0;
-      z-index: 100;
-      transition: background-color 0.3s ease;
-    }
-    body.dark .navbar { background-color: #333; }
-    .navbar .container {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-    }
-    .logo {
-      font-weight: 700;
-      font-size: 1.5rem;
-      color: #f94144;
-      text-decoration: none;
-    }
-    body.dark .logo { color: #ff5c5c; }
-    .nav-links {
-      display: flex;
-      align-items: center;
-    }
-    .nav-links a {
-      margin-left: 1.5rem;
-      color: #333;
-      text-decoration: none;
-      font-weight: 600;
-      transition: color 0.3s ease;
-    }
-    body.dark .nav-links a { color: #e0e0e0; }
-    .nav-links a:hover { color: #f94144; }
-    .btn-primary {
-      background-color: #f9c74f;
-      color: #333;
-      border: none;
-      padding: 0.6rem 1.2rem;
-      border-radius: 30px;
-      font-weight: 600;
-      cursor: pointer;
-      transition: background-color 0.3s ease;
-    }
-    .btn-primary:hover { background-color: #f7b800; }
-    .btn-secondary {
-      background-color: #90be6d;
-      color: #fff;
-      border: none;
-      padding: 0.5rem 1rem;
-      border-radius: 20px;
-      font-weight: 600;
-      cursor: pointer;
-      transition: background-color 0.3s ease;
-    }
-    .btn-secondary:hover { background-color: #6b8e23; }
-    .cta-btn { margin-left: 1rem; }
-    .dark-mode-toggle {
-      background: none;
-      border: none;
-      font-size: 1.2rem;
-      margin-left: 1rem;
-      cursor: pointer;
-      color: #333;
-      transition: color 0.3s ease;
-    }
-    body.dark .dark-mode-toggle { color: #e0e0e0; }
-    .hamburger {
-      display: none;
-      flex-direction: column;
-      cursor: pointer;
-      border: none;
-      background: none;
-      margin-left: 1rem;
-    }
-    .hamburger span {
-      height: 3px;
-      width: 25px;
-      background: #333;
-      margin-bottom: 5px;
-      border-radius: 2px;
-      transition: background 0.3s ease;
-      display: block;
-    }
-    body.dark .hamburger span { background: #e0e0e0; }
-    .nav-links.mobile-open { display: block !important; }
-
-    /* Hero Section */
-    .hero {
-      background-color: #caf0f8;
-      padding: 3rem 0;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      transition: background-color 0.3s ease;
-    }
-    body.dark .hero { background-color: #2a2a2a; }
-    .hero-content {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 2rem;
-      flex-wrap: wrap;
-    }
-    .hero-text { flex: 1 1 400px; }
-    .hero-text h1 {
-      font-size: 2.8rem;
-      color: #f94144;
-      margin-bottom: 1rem;
-    }
-    body.dark .hero-text h1 { color: #ff5c5c; }
-    .hero-text p {
-      font-size: 1.2rem;
-      margin-bottom: 1.5rem;
-      color: #333;
-    }
-    body.dark .hero-text p { color: #e0e0e0; }
-    .hero-image { flex: 1 1 400px; text-align: center; }
-    .hero-image img {
-      max-width: 100%;
-      border-radius: 20px;
-      box-shadow: 0 10px 20px rgba(0,0,0,0.1);
-    }
-
-    /* Why Us Section */
-    .why-us { padding: 3rem 0; text-align: center; }
-    .section-title {
-      font-size: 2rem;
-      margin-bottom: 2rem;
-      color: #f94144;
-    }
-    body.dark .section-title { color: #ff5c5c; }
-    .features-grid {
-      display: flex;
-      justify-content: center;
-      gap: 2rem;
-      flex-wrap: wrap;
-    }
-    .feature-card {
-      background-color: #fff;
-      border-radius: 15px;
-      padding: 2rem;
-      width: 250px;
-      box-shadow: 0 5px 15px rgba(0,0,0,0.05);
-      transition: transform 0.3s ease, background-color 0.3s ease;
-    }
-    body.dark .feature-card { background-color: #333; }
-    .feature-card:hover { transform: translateY(-10px); }
-    .feature-icon { font-size: 3rem; margin-bottom: 1rem; }
-    .feature-card h3 {
-      margin-bottom: 0.5rem;
-      color: #333;
-    }
-    body.dark .feature-card h3 { color: #e0e0e0; }
-    .feature-card p { color: #666; font-size: 0.95rem; }
-    body.dark .feature-card p { color: #ccc; }
-
-    /* Products Section */
-    .products { padding: 3rem 0; text-align: center; }
-    .product-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-      gap: 2rem;
-      margin-top: 2rem;
-    }
-    .product-card {
-      background-color: #fff;
-      border-radius: 15px;
-      padding: 1rem;
-      box-shadow: 0 5px 15px rgba(0,0,0,0.05);
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      transition: box-shadow 0.3s ease, background-color 0.3s ease;
-    }
-    body.dark .product-card { background-color: #333; }
-    .product-card:hover { box-shadow: 0 10px 25px rgba(0,0,0,0.1); }
-    .product-card img {
-      width: 100%;
-      border-radius: 15px;
-      object-fit: cover;
-      max-height: 180px;
-      margin-bottom: 1rem;
-    }
-    .product-card h3 {
-      margin-bottom: 0.5rem;
-      color: #f94144;
-    }
-    body.dark .product-card h3 { color: #ff5c5c; }
-    .price { font-weight: 700; margin-bottom: 1rem; color: #90be6d; }
-    .product-card button { align-self: stretch; }
-
-    /* Testimonials */
-    .testimonials {
-      background-color: #ffd6e8;
-      padding: 3rem 0;
-      text-align: center;
-      transition: background-color 0.3s ease;
-    }
-    body.dark .testimonials { background-color: #2a2a2a; }
-    .testimonial-cards {
-      display: flex;
-      gap: 2rem;
-      flex-wrap: wrap;
-      justify-content: center;
-      margin-top: 2rem;
-    }
-    .testimonial-card {
-      background-color: #fff;
-      border-radius: 15px;
-      padding: 1.5rem;
-      width: 300px;
-      box-shadow: 0 5px 15px rgba(0,0,0,0.05);
-      font-style: italic;
-      color: #555;
-      position: relative;
-      transition: background-color 0.3s ease;
-    }
-    body.dark .testimonial-card {
-      background-color: #333;
-      color: #ccc;
-    }
-    .testimonial-card h4 {
-      margin-top: 1rem;
-      font-weight: 600;
-      color: #f94144;
-    }
-    body.dark .testimonial-card h4 { color: #ff5c5c; }
-
-    /* Footer */
-    .footer {
-      background-color: #90be6d;
-      color: #fff;
-      padding: 2rem 0 1rem;
-      margin-top: auto;
-      transition: background-color 0.3s ease;
-    }
-    body.dark .footer { background-color: #333; }
-    .footer-content {
-      display: flex;
-      justify-content: space-between;
-      flex-wrap: wrap;
-      gap: 2rem;
-    }
-    .footer-section { flex: 1 1 250px; }
-    .footer-section h3,
-    .footer-section h4 { margin-bottom: 1rem; color: #fff; }
-    .footer-section p,
-    .footer-section ul {
-      font-size: 0.9rem;
-      line-height: 1.4;
-    }
-    .footer-section ul { list-style: none; padding-left: 0; }
-    .footer-section ul li { margin-bottom: 0.5rem; }
-    .footer-section ul li a { color: #fff; text-decoration: none; }
-    .footer-section ul li a:hover { color: #f9c74f; }
-    .social-icons a {
-      color: #fff;
-      font-size: 1.2rem;
-      margin-right: 1rem;
-    }
-    .social-icons a:hover { color: #f9c74f; }
-    .footer-bottom {
-      text-align: center;
-      margin-top: 1rem;
-      font-size: 0.85rem;
-      opacity: 0.8;
-    }
-
-    /* Floating WhatsApp */
-    .whatsapp-float {
-      position: fixed;
-      bottom: 25px;
-      right: 25px;
-      background-color: #25d366;
-      color: white;
-      border-radius: 50%;
-      padding: 15px;
-      font-size: 24px;
-      box-shadow: 0 5px 10px rgba(0,0,0,0.2);
-      z-index: 1000;
-      transition: background-color 0.3s ease;
-    }
-    .whatsapp-float:hover { background-color: #128c4a; }
-
-    /* Responsive */
-    @media (max-width: 991px) {
-      .nav-links { display: none; }
-      .hamburger { display: flex; }
-      .cta-btn { display: none; }
-      .hero-content { flex-direction: column; }
-      .hero-text, .hero-image { flex: 1 1 100%; }
-    }
-    @media (max-width: 600px) {
-      .features-grid, .testimonial-cards { flex-direction: column; align-items: center; }
-    }
-  </style>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" />
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
   <!-- Navbar -->
@@ -392,33 +73,45 @@
   <section id="products" class="products container">
     <h2 class="section-title">Produk Best Seller</h2>
     <div class="product-grid">
+        <div class="product-card">
+          <img src="image/diamond8l.png" alt="Creamy vanilla ice cream scoop on a waffle cone with chocolate chips and a mint leaf garnish on a light blue background" />
+          <h3>Es Krim Diamond</h3>
+          <h4>8 Liter</h4>
+          <p class="price">Rp200.000</p>
+          <a href="https://wa.me/6281234567890" target="_blank" class="btn btn-secondary">Order ke Whatsapp</a>
+        </div>
       <!-- Product Card 1 -->
       <div class="product-card">
-        <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/40dd2277-43e5-4529-a3d2-21fb185ee51a.png" alt="Creamy vanilla ice cream scoop on a waffle cone with chocolate chips and a mint leaf garnish on a light blue background" />
-        <h3>Es Krim Vanilla</h3>
-        <p class="price">Rp25.000</p>
-        <button class="btn btn-secondary">Tambah ke Keranjang</button>
+        <img src="image/espessia.png.png" alt="Creamy vanilla ice cream scoop on a waffle cone with chocolate chips and a mint leaf garnish on a light blue background" />
+        <h3>Es Krim Espessia</h3>
+        <h4>8 liter</h4>
+        <p class="price">Rp200.000</p>
+        <a href="https://wa.me/6281234567890" target="_blank" class="btn btn-secondary">Order ke Whatsapp</a>
       </div>
-      <!-- Product Card 2 -->
+      <!-- Product Card 1 -->
+      <!-- Product Card 1 -->
       <div class="product-card">
-        <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/91d1ea3a-a75e-48a9-92a8-2a4ea52a721b.png" alt="Rich chocolate ice cream scoop in a bowl with melted chocolate drizzle and almond slivers on a pastel pink background" />
-        <h3>Es Krim Coklat</h3>
-        <p class="price">Rp27.000</p>
-        <button class="btn btn-secondary">Tambah ke Keranjang</button>
+        <img src="image/miami.png" alt="Creamy vanilla ice cream scoop on a waffle cone with chocolate chips and a mint leaf garnish on a light blue background" />
+        <h3>Es Krim Miami</h3>
+        <h4>8 liter</h4>
+        <p class="price">Rp160.000</p>
+        <a href="https://wa.me/6281234567890" target="_blank" class="btn btn-secondary">Order ke Whatsapp</a>
       </div>
-      <!-- Product Card 3 -->
+      <!-- Product Card 1 -->
       <div class="product-card">
-        <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/f0a1cbb9-1b24-4664-b702-1444d5ca24c1.png" alt="Fresh strawberry ice cream scoop topped with whole strawberries and whipped cream on a soft blue background" />
-        <h3>Es Krim Stroberi</h3>
-        <p class="price">Rp28.000</p>
-        <button class="btn btn-secondary">Tambah ke Keranjang</button>
+        <img src="image/aice.png" alt="Creamy vanilla ice cream scoop on a waffle cone with chocolate chips and a mint leaf garnish on a light blue background" />
+        <h3>Es Krim Aice</h3>
+        <h4>8 Liter</h4>
+        <p class="price">Rp180.000</p>
+        <a href="https://wa.me/6281234567890" target="_blank" class="btn btn-secondary">Order ke Whatsapp</a>
       </div>
-      <!-- Product Card 4 -->
+      <!-- Product Card 1 -->
       <div class="product-card">
-        <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/10df5d03-fbb2-4cdd-87ea-5ebd2f64e310.png" alt="Zesty lemon ice cream cone with lemon slices and yellow zest sprinkles on a gentle pink background" />
-        <h3>Es Krim Lemon</h3>
-        <p class="price">Rp26.000</p>
-        <button class="btn btn-secondary">Tambah ke Keranjang</button>
+        <img src="image/eskrim.png" alt="Creamy vanilla ice cream scoop on a waffle cone with chocolate chips and a mint leaf garnish on a light blue background" />
+        <h3>Es Krim Diamond</h3>
+        <h4>700 Ml</h4>
+        <p class="price">Rp180.000</p>
+        <a href="https://wa.me/6281234567890" target="_blank" class="btn btn-secondary">Order ke Whatsapp</a>
       </div>
     </div>
   </section>
